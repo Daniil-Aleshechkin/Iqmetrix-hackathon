@@ -1,7 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
+import BarChart from "./../components/charts/BarChart";
 import PageTitle from "./../components/common/PageTitle";
 import SmallStats from "./../components/common/SmallStats";
 import UsersOverview from "./../components/blog/UsersOverview";
@@ -10,8 +11,7 @@ import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
 
-class BlogOverview  extends Component {
-
+class BlogOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -113,7 +113,6 @@ class BlogOverview  extends Component {
     };
   }
 
-
   render() {
     return (
       <Container fluid className="main-content-container px-4">
@@ -121,7 +120,17 @@ class BlogOverview  extends Component {
         <Row noGutters className="page-header py-4">
           <PageTitle subtitle="Dashboard" className="text-sm-left mb-1" />
         </Row>
-
+        <Row className="col-lg mb-4">
+          <Col sm="12" lg="4" className="mb-4">
+            <BarChart />
+          </Col>
+          <Col sm="12" lg="4" className="mb-4">
+            <BarChart />
+          </Col>
+          <Col sm="12" lg="4" className="mb-4">
+            <BarChart />
+          </Col>
+        </Row>
         {/* Small Stats Blocks */}
         <Row>
           {this.state.smallStats.map((stats, idx) => (
@@ -168,9 +177,8 @@ class BlogOverview  extends Component {
           </Col>
         </Row>
       </Container>
-    )
+    );
   }
-
 }
 
 export default BlogOverview;
