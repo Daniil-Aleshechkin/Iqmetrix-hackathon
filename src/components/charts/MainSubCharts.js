@@ -11,9 +11,6 @@ class MainSubCharts extends Component {
 
     this.state = {
       modes: { bar: "stock", covid: "cases", prediction: "sales" },
-      getCovidData: props.getCovidData,
-      getPredictionData: props.getPredictionData,
-      getRetailData: props.getRetailData,
 
       chartData: {
         retailData: props.getRetailData.stock(),
@@ -21,29 +18,68 @@ class MainSubCharts extends Component {
         predictionData: props.getPredictionData.sales()
       }
     };
+    this.getCovidData = props.getCovidData;
+    this.getPredictionData = props.getPredictionData;
+    this.getRetailData = props.getRetailData;
   }
+  onModeUpdate = {
+    onRetailUpdate: mode => {
+      this.setState({
+        modes: { ...this.state.modes, bar: mode },
+        chartData: {
+          ...this.state.chartData,
+          retailData: this.getRetailData[mode]()
+        }
+      });
+    },
+    onCovidUpdate: mode => {
+      console.log(mode, this.getCovidData[mode]());
+      this.setState({
+        modes: { ...this.state.modes, covid: mode },
+        chartData: {
+          ...this.state.chartData,
+          covidData: this.getCovidData[mode]()
+        }
+      });
+    },
+    onPredictionUpdate: mode => {
+      this.setState({
+        modes: { ...this.state.modes, prediction: mode },
+        chartData: {
+          ...this.state.chartData,
+          predictionData: this.getPredictionData[mode]()
+        }
+      });
+    }
+  };
   render() {
     return (
       <Row>
         <Col sm="12" lg="4" className="mb-4">
           <BarChart
+            key={`retail ${this.state.modes.bar}`}
             labels={Object.keys(this.state.chartData.retailData.data)}
             data={Object.values(this.state.chartData.retailData.data)}
             mode={this.state.modes.bar}
+            onRetailUpdate={this.onModeUpdate.onRetailUpdate}
           />
         </Col>
         <Col sm="12" lg="4" className="mb-4">
           <CovidChart
+            key={`covid ${this.state.modes.covid}`}
             labels={Object.keys(this.state.chartData.covidData.data)}
             data={Object.values(this.state.chartData.covidData.data)}
             mode={this.state.modes.covid}
+            onCovidUpdate={this.onModeUpdate.onCovidUpdate}
           />
         </Col>
         <Col sm="12" lg="4" className="mb-4">
           <PredictiveChart
+            key={`prediction ${this.state.modes.prediction}`}
             labels={Object.keys(this.state.chartData.predictionData.data)}
             data={Object.values(this.state.chartData.predictionData.data)}
             mode={this.state.modes.prediction}
+            onPredictionUpdate={this.onModeUpdate.onPredictionUpdate}
           />
         </Col>
       </Row>

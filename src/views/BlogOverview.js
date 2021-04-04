@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
 import MainSubCharts from "./../components/charts/MainSubCharts";
@@ -240,7 +239,78 @@ class BlogOverview extends Component {
         for (var i = 0; i < 5; i++) {
           nextMonths.push(months[(i + thisMonth) % 12]);
         }
-        console.log(nextMonths);
+        return nextMonths;
+      })();
+      const responseValues = Array.from(
+        new Array(5),
+        () => Math.random() * 1000
+      );
+
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    },
+    revenue: () => {
+      const responseLabels = (() => {
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+        const thisMonth = new Date().getMonth();
+        var nextMonths = [];
+
+        for (var i = 0; i < 5; i++) {
+          nextMonths.push(months[(i + thisMonth) % 12]);
+        }
+        return nextMonths;
+      })();
+      const responseValues = Array.from(
+        new Array(5),
+        () => Math.random() * 1000
+      );
+
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    },
+    customer: () => {
+      const responseLabels = (() => {
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+        const thisMonth = new Date().getMonth();
+        var nextMonths = [];
+
+        for (var i = 0; i < 5; i++) {
+          nextMonths.push(months[(i + thisMonth) % 12]);
+        }
         return nextMonths;
       })();
       const responseValues = Array.from(

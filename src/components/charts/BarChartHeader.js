@@ -12,6 +12,7 @@ class BarChartHeader extends Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = { open: false };
+    this.onRetailUpdate = props.onRetailUpdate;
   }
   toggle() {
     this.setState(prevState => {
@@ -24,10 +25,34 @@ class BarChartHeader extends Component {
         <Dropdown open={this.state.open} toggle={this.toggle}>
           <DropdownToggle>Parameter</DropdownToggle>
           <DropdownMenu>
-            <DropdownItem>Stock</DropdownItem>
-            <DropdownItem>Sales</DropdownItem>
-            <DropdownItem>Customers</DropdownItem>
-            <DropdownItem>Revenue</DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onRetailUpdate("stock");
+              }}
+            >
+              Stock
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onRetailUpdate("sales");
+              }}
+            >
+              Sales
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onRetailUpdate("customer");
+              }}
+            >
+              Customers
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onRetailUpdate("revenue");
+              }}
+            >
+              Revenue
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </CardHeader>

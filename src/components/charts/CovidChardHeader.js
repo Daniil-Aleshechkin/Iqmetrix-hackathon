@@ -12,6 +12,7 @@ class CovidChartHeader extends Component {
     super(props);
     this.toggleParameter = this.toggleParameter.bind(this);
     this.toggleCovid = this.toggleCovid.bind(this);
+    this.onCovidUpdate = props.onCovidUpdate;
     this.state = { openParameter: false, openCovidItem: false };
   }
   toggleParameter() {
@@ -34,10 +35,13 @@ class CovidChartHeader extends Component {
         >
           <DropdownToggle>Parameter</DropdownToggle>
           <DropdownMenu>
-            <DropdownItem>Stock</DropdownItem>
-            <DropdownItem>Sales</DropdownItem>
-            <DropdownItem>Customers</DropdownItem>
-            <DropdownItem>Revenue</DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onCovidUpdate("cases");
+              }}
+            >
+              Cases
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
         <Dropdown

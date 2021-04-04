@@ -10,9 +10,10 @@ class PredictiveChart extends Component {
     this.labels = props.labels;
     this.data = props.data;
     this.mode = props.mode;
+    this.onPredictionUpdate = props.onPredictionUpdate;
     this.canvasRef = React.createRef();
   }
-  formatMode = { sales: "Sales" };
+  formatMode = { sales: "Sales", customer: "Customers", revenue: "Revenue" };
   componentDidMount() {
     const chartOptions = {
       ...{
@@ -22,7 +23,6 @@ class PredictiveChart extends Component {
         },
         elements: {
           line: {
-            // A higher value makes the line look skewed at this ratio.
             tension: 0
           },
           point: {
@@ -100,7 +100,7 @@ class PredictiveChart extends Component {
   render() {
     return (
       <Card>
-        <PredictiveChartHeader />
+        <PredictiveChartHeader onPredictionUpdate={this.onPredictionUpdate} />
         <CardBody>
           <canvas
             ref={this.canvasRef}

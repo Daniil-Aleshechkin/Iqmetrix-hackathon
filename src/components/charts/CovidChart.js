@@ -10,6 +10,7 @@ class CovidChart extends Component {
     this.labels = props.labels;
     this.data = props.data;
     this.mode = props.mode;
+    this.onCovidUpdate = props.onCovidUpdate;
     this.canvasRef = React.createRef();
   }
   formatMode = { cases: "Cases" };
@@ -100,7 +101,7 @@ class CovidChart extends Component {
   render() {
     return (
       <Card>
-        <CovidChartHeader />
+        <CovidChartHeader onCovidUpdate={this.onCovidUpdate} />
         <CardBody>
           <canvas
             ref={this.canvasRef}

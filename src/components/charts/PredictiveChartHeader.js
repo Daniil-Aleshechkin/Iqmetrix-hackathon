@@ -11,6 +11,7 @@ class PredictiveChartHeader extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
+    this.onPredictionUpdate = props.onPredictionUpdate;
     this.state = { open: false };
   }
   toggle() {
@@ -24,10 +25,27 @@ class PredictiveChartHeader extends Component {
         <Dropdown open={this.state.open} toggle={this.toggle}>
           <DropdownToggle>Parameter</DropdownToggle>
           <DropdownMenu>
-            <DropdownItem>Stock</DropdownItem>
-            <DropdownItem>Sales</DropdownItem>
-            <DropdownItem>Customers</DropdownItem>
-            <DropdownItem>Revenue</DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onPredictionUpdate("sales");
+              }}
+            >
+              Sales
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onPredictionUpdate("customer");
+              }}
+            >
+              Customers
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => {
+                this.onPredictionUpdate("revenue");
+              }}
+            >
+              Revenue
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </CardHeader>
