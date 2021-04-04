@@ -17,6 +17,10 @@ const TotalTable = ({ sale, ship, revenue, customer }) => {
     <table className="table table-sm table-hover table-bordered">
       <thead>
         <tr>
+          <th colSpan="2">All Data</th>
+          <th>Detail</th>
+        </tr>
+        <tr>
           <th scope="col">Parameter</th>
           <th scope="col">Count</th>
           <th scope="col" className="text-right">
