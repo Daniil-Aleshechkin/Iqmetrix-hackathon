@@ -4,6 +4,7 @@ import { Container, Row, Col } from "shards-react";
 
 import BarChart from "./../components/charts/BarChart";
 import CovidChart from "./../components/charts/CovidChart";
+import PredictiveChart from "./../components/charts/PredictiveChart";
 import PageTitle from "./../components/common/PageTitle";
 import SmallStats from "./../components/common/SmallStats";
 import UsersOverview from "./../components/blog/UsersOverview";
@@ -129,7 +130,7 @@ class BlogOverview extends Component {
             <CovidChart />
           </Col>
           <Col sm="12" lg="4" className="mb-4">
-            <BarChart />
+            <PredictiveChart />
           </Col>
         </Row>
         {/* Small Stats Blocks */}
