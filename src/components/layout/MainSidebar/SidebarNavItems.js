@@ -1,12 +1,14 @@
 import React from "react";
-import { Nav } from "shards-react";
+import { Nav, Row, Col } from "shards-react";
 
 import SidebarNavItem from "./SidebarNavItem";
 import { Store } from "../../../flux";
 
+import TotalTable from "./../../../components/tools/TotalTable";
+
 class SidebarNavItems extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       navItems: Store.getSidebarItems()
@@ -38,9 +40,13 @@ class SidebarNavItems extends React.Component {
           {items.map((item, idx) => (
             <SidebarNavItem key={idx} item={item} />
           ))}
+
+          <Col>
+            <TotalTable />
+          </Col>
         </Nav>
       </div>
-    )
+    );
   }
 }
 
