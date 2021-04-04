@@ -7,9 +7,12 @@ import PredictiveChartHeader from "./PredictiveChartHeader";
 class PredictiveChart extends Component {
   constructor(props) {
     super(props);
-
+    this.labels = props.labels;
+    this.data = props.data;
+    this.mode = props.mode;
     this.canvasRef = React.createRef();
   }
+  formatMode = { sales: "Sales" };
   componentDidMount() {
     const chartOptions = {
       ...{
@@ -61,22 +64,35 @@ class PredictiveChart extends Component {
           mode: "nearest",
           intersect: false
         }
-      },
-      ...this.props.chartOptions
+      }
     };
-
+    const chartData = {
+      labels: this.labels,
+      datasets: [
+        {
+          label: `${this.formatMode[this.mode]} Prediction`,
+          fill: "start",
+          data: this.data,
+          backgroundColor: "rgba(0,123,255,0.1)",
+          borderColor: "rgba(0,123,255,1)",
+          pointBackgroundColor: "#ffffff",
+          pointHoverBackgroundColor: "rgb(0,123,255)",
+          borderWidth: 1.5,
+          pointRadius: 0,
+          pointHoverRadius: 3
+        }
+      ]
+    };
     const BlogUsersOverview = new Chart(this.canvasRef.current, {
       type: "LineWithLine",
-      data: this.props.chartData,
+      data: chartData,
       options: chartOptions
     });
 
     // They can still be triggered on hover.
     const buoMeta = BlogUsersOverview.getDatasetMeta(0);
     buoMeta.data[0]._model.radius = 0;
-    buoMeta.data[
-      this.props.chartData.datasets[0].data.length - 1
-    ]._model.radius = 0;
+    buoMeta.data[chartData.datasets[0].data.length - 1]._model.radius = 0;
 
     // Render the chart.
     BlogUsersOverview.render();
@@ -95,48 +111,4 @@ class PredictiveChart extends Component {
     );
   }
 }
-PredictiveChart.defaultProps = {
-  title: "Users Overview",
-  chartData: {
-    labels: (() => {
-      const months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ];
-      const thisMonth = new Date().getMonth();
-      var nextMonths = [];
-
-      for (var i = 0; i < 5; i++) {
-        nextMonths.push(months[(i + thisMonth) % 12]);
-      }
-      console.log(nextMonths);
-      return nextMonths;
-    })(),
-    datasets: [
-      {
-        label: "Sales Prediction",
-        fill: "start",
-        data: [123, 354, 564, 765, 900],
-        backgroundColor: "rgba(0,123,255,0.1)",
-        borderColor: "rgba(0,123,255,1)",
-        pointBackgroundColor: "#ffffff",
-        pointHoverBackgroundColor: "rgb(0,123,255)",
-        borderWidth: 1.5,
-        pointRadius: 0,
-        pointHoverRadius: 3
-      }
-    ]
-  }
-};
-
 export default PredictiveChart;

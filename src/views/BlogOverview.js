@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
-import BarChart from "./../components/charts/BarChart";
-import CovidChart from "./../components/charts/CovidChart";
-import PredictiveChart from "./../components/charts/PredictiveChart";
+import MainSubCharts from "./../components/charts/MainSubCharts";
 import PageTitle from "./../components/common/PageTitle";
 import SmallStats from "./../components/common/SmallStats";
 import UsersOverview from "./../components/blog/UsersOverview";
@@ -115,6 +113,149 @@ class BlogOverview extends Component {
     };
   }
 
+  //Grabbing data functions
+  //Will replace with api calls also upgrade them to get yearly, montly, and daily inputs
+  getRetailData = {
+    stock: () => {
+      const responseLabels = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July"
+      ];
+      const responseValues = Array.from(
+        new Array(7),
+        () => Math.random() * 100
+      );
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    },
+    sales: () => {
+      const responseLabels = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July"
+      ];
+      const responseValues = Array.from(
+        new Array(7),
+        () => Math.random() * 100
+      );
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    },
+    revenue: () => {
+      const responseLabels = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July"
+      ];
+      const responseValues = Array.from(
+        new Array(7),
+        () => Math.random() * 100
+      );
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    },
+    customer: () => {
+      const responseLabels = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July"
+      ];
+      const responseValues = Array.from(
+        new Array(7),
+        () => Math.random() * 100
+      );
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    }
+  };
+  getCovidData = {
+    cases: () => {
+      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseValues = Array.from(
+        new Array(30),
+        () => Math.random() * 1000
+      );
+
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    }
+  };
+  getPredictionData = {
+    sales: () => {
+      const responseLabels = (() => {
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+        const thisMonth = new Date().getMonth();
+        var nextMonths = [];
+
+        for (var i = 0; i < 5; i++) {
+          nextMonths.push(months[(i + thisMonth) % 12]);
+        }
+        console.log(nextMonths);
+        return nextMonths;
+      })();
+      const responseValues = Array.from(
+        new Array(5),
+        () => Math.random() * 1000
+      );
+
+      var data = {};
+      responseLabels.forEach((label, i) => {
+        data[label] = responseValues[i];
+      });
+
+      return { data };
+    }
+  };
   render() {
     return (
       <Container fluid className="main-content-container px-4">
@@ -122,17 +263,11 @@ class BlogOverview extends Component {
         <Row noGutters className="page-header py-4">
           <PageTitle subtitle="Dashboard" className="text-sm-left mb-1" />
         </Row>
-        <Row>
-          <Col sm="12" lg="4" className="mb-4">
-            <BarChart />
-          </Col>
-          <Col sm="12" lg="4" className="mb-4">
-            <CovidChart />
-          </Col>
-          <Col sm="12" lg="4" className="mb-4">
-            <PredictiveChart />
-          </Col>
-        </Row>
+        <MainSubCharts
+          getCovidData={this.getCovidData}
+          getPredictionData={this.getPredictionData}
+          getRetailData={this.getRetailData}
+        />
         {/* Small Stats Blocks */}
         <Row>
           {this.state.smallStats.map((stats, idx) => (

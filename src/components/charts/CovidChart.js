@@ -7,9 +7,12 @@ import CovidChartHeader from "./CovidChardHeader";
 class CovidChart extends Component {
   constructor(props) {
     super(props);
-
+    this.labels = props.labels;
+    this.data = props.data;
+    this.mode = props.mode;
     this.canvasRef = React.createRef();
   }
+  formatMode = { cases: "Cases" };
   componentDidMount() {
     const chartOptions = {
       ...{
@@ -61,22 +64,35 @@ class CovidChart extends Component {
           mode: "nearest",
           intersect: false
         }
-      },
-      ...this.props.chartOptions
+      }
     };
-
+    const chartData = {
+      labels: this.labels,
+      datasets: [
+        {
+          label: this.formatMode[this.mode],
+          fill: "start",
+          data: this.data,
+          backgroundColor: "rgba(0,123,255,0.1)",
+          borderColor: "rgba(0,123,255,1)",
+          pointBackgroundColor: "#ffffff",
+          pointHoverBackgroundColor: "rgb(0,123,255)",
+          borderWidth: 1.5,
+          pointRadius: 0,
+          pointHoverRadius: 3
+        }
+      ]
+    };
     const BlogUsersOverview = new Chart(this.canvasRef.current, {
       type: "LineWithLine",
-      data: this.props.chartData,
+      data: chartData,
       options: chartOptions
     });
 
     // They can still be triggered on hover.
     const buoMeta = BlogUsersOverview.getDatasetMeta(0);
     buoMeta.data[0]._model.radius = 0;
-    buoMeta.data[
-      this.props.chartData.datasets[0].data.length - 1
-    ]._model.radius = 0;
+    buoMeta.data[chartData.datasets[0].data.length - 1]._model.radius = 0;
 
     // Render the chart.
     BlogUsersOverview.render();
@@ -95,56 +111,5 @@ class CovidChart extends Component {
     );
   }
 }
-CovidChart.defaultProps = {
-  title: "Users Overview",
-  chartData: {
-    labels: Array.from(new Array(30), (_, i) => (i === 0 ? 1 : i)),
-    datasets: [
-      {
-        label: "Covid Cases This Month",
-        fill: "start",
-        data: [
-          500,
-          800,
-          320,
-          180,
-          240,
-          320,
-          230,
-          650,
-          590,
-          1200,
-          750,
-          940,
-          1420,
-          1200,
-          960,
-          1450,
-          1820,
-          2800,
-          2102,
-          1920,
-          3920,
-          3202,
-          3140,
-          2800,
-          3200,
-          3200,
-          3400,
-          2910,
-          3100,
-          4250
-        ],
-        backgroundColor: "rgba(0,123,255,0.1)",
-        borderColor: "rgba(0,123,255,1)",
-        pointBackgroundColor: "#ffffff",
-        pointHoverBackgroundColor: "rgb(0,123,255)",
-        borderWidth: 1.5,
-        pointRadius: 0,
-        pointHoverRadius: 3
-      }
-    ]
-  }
-};
 
 export default CovidChart;
