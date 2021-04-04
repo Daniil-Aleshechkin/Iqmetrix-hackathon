@@ -14,13 +14,13 @@ const TotalTable = ({ sale, ship, revenue, customer }) => {
     return "danger";
   }
   return (
-    <table className="table table-sm table-hover">
+    <table className="table table-sm table-hover table-bordered">
       <thead>
         <tr>
           <th scope="col">Parameter</th>
           <th scope="col">Count</th>
           <th scope="col" className="text-right">
-            Percentage
+            %
           </th>
         </tr>
       </thead>

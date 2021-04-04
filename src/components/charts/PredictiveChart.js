@@ -3,6 +3,7 @@ import { Card, CardBody } from "shards-react";
 
 import Chart from "../../utils/chart";
 
+import PredictiveChartHeader from "./PredictiveChartHeader";
 class PredictiveChart extends Component {
   constructor(props) {
     super(props);
@@ -83,6 +84,7 @@ class PredictiveChart extends Component {
   render() {
     return (
       <Card>
+        <PredictiveChartHeader />
         <CardBody>
           <canvas
             ref={this.canvasRef}

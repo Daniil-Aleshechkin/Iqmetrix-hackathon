@@ -3,6 +3,7 @@ import { Card, CardBody } from "shards-react";
 
 import Chart from "../../utils/chart";
 
+import CovidChartHeader from "./CovidChardHeader";
 class CovidChart extends Component {
   constructor(props) {
     super(props);
@@ -83,6 +84,7 @@ class CovidChart extends Component {
   render() {
     return (
       <Card>
+        <CovidChartHeader />
         <CardBody>
           <canvas
             ref={this.canvasRef}

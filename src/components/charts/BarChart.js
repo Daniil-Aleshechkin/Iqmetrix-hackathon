@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody } from "shards-react";
 import { CChart } from "@coreui/react-chartjs/es/CChart";
+import BarChartHeader from "./BarChartHeader";
 const BarChart = () => {
   const bar = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -22,6 +23,7 @@ const BarChart = () => {
   };
   return (
     <Card>
+      <BarChartHeader />
       <CardBody>
         <div className="chart-wraper">
           <CChart
