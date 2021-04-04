@@ -122,7 +122,7 @@ class BlogOverview extends Component {
         <Row noGutters className="page-header py-4">
           <PageTitle subtitle="Dashboard" className="text-sm-left mb-1" />
         </Row>
-        <Row className="col-lg mb-4">
+        <Row>
           <Col sm="12" lg="4" className="mb-4">
             <BarChart />
           </Col>

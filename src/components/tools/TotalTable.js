@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Card, CardBody } from "shards-react";
 const TotalTable = ({ sale, ship, revenue, customer }) => {
   function formatPercentage(percentage) {
     if (percentage > 0) {
@@ -14,7 +15,7 @@ const TotalTable = ({ sale, ship, revenue, customer }) => {
     return "danger";
   }
   return (
-    <table className="table table-sm table-hover table-bordered">
+    <table className="table table-sm table-hover table-bordered p-1">
       <thead>
         <tr className="text-center">
           <th colSpan="2">All Data</th>

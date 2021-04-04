@@ -1,0 +1,7 @@
+aside {
+  flex-basis: min(250px, 16.666%);
+}
+
+aside > * {
+  width: 100%;
+}

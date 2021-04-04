@@ -5,7 +5,8 @@ import SidebarNavItem from "./SidebarNavItem";
 import { Store } from "../../../flux";
 
 import TotalTable from "./../../../components/tools/TotalTable";
-
+import ZoomStock from "./../../../components/tools/ZoomStock";
+import MapLayers from "./../../../components/tools/MapLayers";
 class SidebarNavItems extends React.Component {
   constructor(props) {
     super(props);
@@ -39,11 +40,10 @@ class SidebarNavItems extends React.Component {
         <Nav className="nav--no-borders flex-column">
           {items.map((item, idx) => (
             <SidebarNavItem key={idx} item={item} />
-          ))}
-
-          <Col>
-            <TotalTable />
-          </Col>
+          ))}{" "}
+          <ZoomStock />
+          <MapLayers />
+          <TotalTable />
         </Nav>
       </div>
     );
