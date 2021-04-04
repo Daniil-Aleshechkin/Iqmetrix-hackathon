@@ -16,9 +16,11 @@ const TotalTable = ({ sale, ship, revenue, customer }) => {
   return (
     <table className="table table-sm table-hover table-bordered">
       <thead>
-        <tr>
+        <tr className="text-center">
           <th colSpan="2">All Data</th>
-          <th>Detail</th>
+          <th id="detail-tab">
+            <button className="btn btn-primary">Detail</button>
+          </th>
         </tr>
         <tr>
           <th scope="col">Parameter</th>
