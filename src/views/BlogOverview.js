@@ -1,6 +1,11 @@
-import React, { Component } from "react";
-import { Container, Row, Col } from "shards-react";
+import React, {Component} from "react";
+import PropTypes from "prop-types";
+import {Container, Row, Col} from "shards-react";
 
+import BarChart from "./../components/charts/BarChart";
+import Map from "./../components/charts/Map";
+import CovidChart from "./../components/charts/CovidChart";
+import PredictiveChart from "./../components/charts/PredictiveChart";
 import MainSubCharts from "./../components/charts/MainSubCharts";
 import PageTitle from "./../components/common/PageTitle";
 import SmallStats from "./../components/common/SmallStats";
@@ -9,6 +14,7 @@ import UsersByDevice from "./../components/blog/UsersByDevice";
 import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
+import '../assets/map.css';
 
 class BlogOverview extends Component {
   constructor(props) {
@@ -21,7 +27,7 @@ class BlogOverview extends Component {
           percentage: "4.7%",
           increase: true,
           chartLabels: [null, null, null, null, null, null, null],
-          attrs: { md: "6", sm: "6" },
+          attrs: {md: "6", sm: "6"},
           datasets: [
             {
               label: "Today",
@@ -39,7 +45,7 @@ class BlogOverview extends Component {
           percentage: "12.4",
           increase: true,
           chartLabels: [null, null, null, null, null, null, null],
-          attrs: { md: "6", sm: "6" },
+          attrs: {md: "6", sm: "6"},
           datasets: [
             {
               label: "Today",
@@ -58,7 +64,7 @@ class BlogOverview extends Component {
           increase: false,
           decrease: true,
           chartLabels: [null, null, null, null, null, null, null],
-          attrs: { md: "4", sm: "6" },
+          attrs: {md: "4", sm: "6"},
           datasets: [
             {
               label: "Today",
@@ -77,7 +83,7 @@ class BlogOverview extends Component {
           increase: false,
           decrease: true,
           chartLabels: [null, null, null, null, null, null, null],
-          attrs: { md: "4", sm: "6" },
+          attrs: {md: "4", sm: "6"},
           datasets: [
             {
               label: "Today",
@@ -96,7 +102,7 @@ class BlogOverview extends Component {
           increase: false,
           decrease: true,
           chartLabels: [null, null, null, null, null, null, null],
-          attrs: { md: "4", sm: "6" },
+          attrs: {md: "4", sm: "6"},
           datasets: [
             {
               label: "Today",
@@ -134,7 +140,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     },
     sales: () => {
       const responseLabels = [
@@ -155,7 +161,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     },
     revenue: () => {
       const responseLabels = [
@@ -176,7 +182,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     },
     customer: () => {
       const responseLabels = [
@@ -197,7 +203,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     }
   };
   getCovidData = {
@@ -213,7 +219,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     }
   };
   getPredictionData = {
@@ -251,7 +257,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     },
     revenue: () => {
       const responseLabels = (() => {
@@ -287,7 +293,7 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     },
     customer: () => {
       const responseLabels = (() => {
@@ -323,15 +329,41 @@ class BlogOverview extends Component {
         data[label] = responseValues[i];
       });
 
-      return { data };
+      return {data};
     }
   };
+
   render() {
     return (
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
-        <Row noGutters className="page-header py-4">
-          <PageTitle subtitle="Dashboard" className="text-sm-left mb-1" />
+        <Row noGutters className="page-header py-2">
+          <PageTitle subtitle="" className="text-sm-left mb-1"/>
+        </Row>
+        <div className="col">
+          <div className="card card-small mb-4">
+            <div className="card-body p-10 pb-3">
+              <div id={"maps_MapAreaBorder0"}
+                className="ag-theme-alpine" style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+                <Map/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Row className="col-lg mb-4">
+          <Col sm="12" lg="4" className="mb-4">
+            <BarChart/>
+          </Col>
+          <Col sm="12" lg="4" className="mb-4">
+            {/*<CovidChart />*/}
+          </Col>
+          <Col sm="12" lg="4" className="mb-4">
+            {/*<PredictiveChart />*/}
+          </Col>
         </Row>
         <MainSubCharts
           getCovidData={this.getCovidData}
@@ -359,28 +391,26 @@ class BlogOverview extends Component {
 
         <Row>
           {/* Users Overview */}
-          <Col lg="8" md="12" sm="12" className="mb-4">
-            <UsersOverview />
-          </Col>
+
 
           {/* Users by Device */}
           <Col lg="4" md="6" sm="12" className="mb-4">
-            <UsersByDevice />
+            <UsersByDevice/>
           </Col>
 
           {/* New Draft */}
           <Col lg="4" md="6" sm="12" className="mb-4">
-            <NewDraft />
+            <NewDraft/>
           </Col>
 
           {/* Discussions */}
           <Col lg="5" md="12" sm="12" className="mb-4">
-            <Discussions />
+            <Discussions/>
           </Col>
 
           {/* Top Referrals */}
           <Col lg="3" md="12" sm="12" className="mb-4">
-            <TopReferrals />
+            <TopReferrals/>
           </Col>
         </Row>
       </Container>
