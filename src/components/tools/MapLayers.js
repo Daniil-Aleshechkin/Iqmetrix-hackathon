@@ -24,7 +24,7 @@ class ZoomStock extends Component {
       <div className="p-1 table-bordered text-center">
         <Dropdown open={this.state.open} toggle={this.toggle}>
           <h4>Map Layers</h4>
-          <DropdownToggle> </DropdownToggle>
+          <DropdownToggle theme="dark"> </DropdownToggle>
           <DropdownMenu>
             <DropdownItem>Stock</DropdownItem>
             <DropdownItem>Sales</DropdownItem>

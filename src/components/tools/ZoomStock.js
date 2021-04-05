@@ -24,7 +24,7 @@ class ZoomStock extends Component {
       <div className="p-1 table-bordered text-center">
         <h4>Zoom to Stock</h4>
         <Dropdown open={this.state.open} toggle={this.toggle}>
-          <DropdownToggle>All Regions</DropdownToggle>
+          <DropdownToggle theme="dark">All Regions</DropdownToggle>
           <DropdownMenu>
             <DropdownItem>Stock</DropdownItem>
             <DropdownItem>Sales</DropdownItem>

@@ -23,7 +23,7 @@ class PredictiveChartHeader extends Component {
     return (
       <CardHeader>
         <Dropdown open={this.state.open} toggle={this.toggle}>
-          <DropdownToggle>Parameter</DropdownToggle>
+          <DropdownToggle theme="dark">Parameter</DropdownToggle>
           <DropdownMenu>
             <DropdownItem
               onClick={() => {

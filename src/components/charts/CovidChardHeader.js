@@ -34,7 +34,7 @@ class CovidChartHeader extends Component {
           open={this.state.openParameter}
           toggle={this.toggleParameter}
         >
-          <DropdownToggle>Parameter</DropdownToggle>
+          <DropdownToggle theme="dark">Parameter</DropdownToggle>
           <DropdownMenu>
             <DropdownItem
               onClick={() => {
@@ -71,7 +71,7 @@ class CovidChartHeader extends Component {
           open={this.state.openCovidItem}
           toggle={this.toggleCovid}
         >
-          <DropdownToggle>Covid Item</DropdownToggle>
+          <DropdownToggle theme="dark">Covid Item</DropdownToggle>
           <DropdownMenu>
             <DropdownItem
               onClick={() => {

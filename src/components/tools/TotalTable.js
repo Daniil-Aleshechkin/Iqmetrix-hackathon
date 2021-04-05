@@ -20,7 +20,7 @@ const TotalTable = ({ sale, ship, revenue, customer }) => {
         <tr className="text-center">
           <th colSpan="2">All Data</th>
           <th id="detail-tab">
-            <button className="btn btn-primary">Detail</button>
+            <button className="btn btn-dark">Detail</button>
           </th>
         </tr>
         <tr>
