@@ -1,19 +1,11 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
-import BarChart from "./../components/charts/BarChart";
 import Map from "./../components/charts/Map";
-import CovidChart from "./../components/charts/CovidChart";
-import PredictiveChart from "./../components/charts/PredictiveChart";
+
 import MainSubCharts from "./../components/charts/MainSubCharts";
 import PageTitle from "./../components/common/PageTitle";
-import SmallStats from "./../components/common/SmallStats";
-import UsersOverview from "./../components/blog/UsersOverview";
-import UsersByDevice from "./../components/blog/UsersByDevice";
-import NewDraft from "./../components/blog/NewDraft";
-import Discussions from "./../components/blog/Discussions";
-import TopReferrals from "./../components/common/TopReferrals";
+
 import "../assets/map.css";
 
 class BlogOverview extends Component {
@@ -340,71 +332,32 @@ class BlogOverview extends Component {
         <Row noGutters className="page-header py-2">
           <PageTitle subtitle="" className="text-sm-left mb-1" />
         </Row>
-        <div className="col">
-          <div className="card card-small mb-4">
-            <div className="card-body p-10 pb-3">
-              <div
-                id={"maps_MapAreaBorder0"}
-                className="ag-theme-alpine"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Map />
+        <Row>
+          <div className="col">
+            <div className="card card-small mb-4">
+              <div className="card-body p-10 pb-3">
+                <div
+                  id={"maps_MapAreaBorder0"}
+                  className="ag-theme-alpine"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <Map />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Row>
+
         {/*All charts under the map should be rendered here */}
         <MainSubCharts
           getCovidData={this.getCovidData}
           getPredictionData={this.getPredictionData}
           getRetailData={this.getRetailData}
         />
-        {/* Small Stats Blocks */}
-        <Row>
-          {this.state.smallStats.map((stats, idx) => (
-            <Col className="col-lg mb-4" key={idx} {...stats.attrs}>
-              <SmallStats
-                id={`small-stats-${idx}`}
-                variation="1"
-                chartData={stats.datasets}
-                chartLabels={stats.chartLabels}
-                label={stats.label}
-                value={stats.value}
-                percentage={stats.percentage}
-                increase={stats.increase}
-                decrease={stats.decrease}
-              />
-            </Col>
-          ))}
-        </Row>
-
-        <Row>
-          {/* Users Overview */}
-
-          {/* Users by Device */}
-          <Col lg="4" md="6" sm="12" className="mb-4">
-            <UsersByDevice />
-          </Col>
-
-          {/* New Draft */}
-          <Col lg="4" md="6" sm="12" className="mb-4">
-            <NewDraft />
-          </Col>
-
-          {/* Discussions */}
-          <Col lg="5" md="12" sm="12" className="mb-4">
-            <Discussions />
-          </Col>
-
-          {/* Top Referrals */}
-          <Col lg="3" md="12" sm="12" className="mb-4">
-            <TopReferrals />
-          </Col>
-        </Row>
       </Container>
     );
   }
