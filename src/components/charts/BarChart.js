@@ -31,7 +31,7 @@ class BarChart extends Component {
   }
   options = {
     tooltips: {
-      enabled: false
+      enabled: true
     },
     maintainAspectRatio: true
   };
@@ -45,7 +45,7 @@ class BarChart extends Component {
               type="bar"
               datasets={this.bar.datasets}
               options={this.options}
-              labels="months"
+              labels={this.bar.labels}
             />
           </div>
         </CardBody>

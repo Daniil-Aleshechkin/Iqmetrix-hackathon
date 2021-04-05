@@ -10,10 +10,16 @@ class MainSubCharts extends Component {
     super(props);
 
     this.state = {
-      modes: { bar: "stock", covid: "cases", prediction: "sales" },
+      modes: {
+        bar: "stock",
+        covid: "cases",
+        covidCompare: "stock",
+        prediction: "sales"
+      },
 
       chartData: {
         retailData: props.getRetailData.stock(),
+        covidCompareData: props.getRetailData.stock(),
         covidData: props.getCovidData.cases(),
         predictionData: props.getPredictionData.sales()
       }
@@ -42,6 +48,16 @@ class MainSubCharts extends Component {
         }
       });
     },
+
+    onCovidCompareUpdate: mode => {
+      this.setState({
+        modes: { ...this.state.modes, covidCompare: mode },
+        chartData: {
+          ...this.state.chartData,
+          covidCompareData: this.getRetailData[mode]()
+        }
+      });
+    },
     onPredictionUpdate: mode => {
       this.setState({
         modes: { ...this.state.modes, prediction: mode },
@@ -66,11 +82,14 @@ class MainSubCharts extends Component {
         </Col>
         <Col sm="12" lg="4" className="mb-4">
           <CovidChart
-            key={`covid ${this.state.modes.covid}`}
+            key={`covid ${this.state.modes.covid} ${this.state.modes.covidCompare}`}
             labels={Object.keys(this.state.chartData.covidData.data)}
-            data={Object.values(this.state.chartData.covidData.data)}
-            mode={this.state.modes.covid}
+            data={Object.values(this.state.chartData.covidCompareData.data)}
+            covidData={Object.values(this.state.chartData.covidData.data)}
+            mode={this.state.modes.covidCompare}
+            covidMode={this.state.modes.covid}
             onCovidUpdate={this.onModeUpdate.onCovidUpdate}
+            onCovidCompareUpdate={this.onModeUpdate.onCovidCompareUpdate}
           />
         </Col>
         <Col sm="12" lg="4" className="mb-4">

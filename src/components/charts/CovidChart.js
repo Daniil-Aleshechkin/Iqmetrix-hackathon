@@ -9,11 +9,22 @@ class CovidChart extends Component {
     super(props);
     this.labels = props.labels;
     this.data = props.data;
+    this.covidData = props.covidData;
     this.mode = props.mode;
+    this.covidMode = props.covidMode;
     this.onCovidUpdate = props.onCovidUpdate;
+    this.onCovidCompareUpdate = props.onCovidCompareUpdate;
     this.canvasRef = React.createRef();
   }
-  formatMode = { cases: "Cases" };
+  formatMode = {
+    cases: "Cases",
+    deaths: "Deaths",
+    vacinations: "Vacinations",
+    stock: "Stock",
+    customer: "Customer",
+    sales: "Sales",
+    revenue: "Revenue"
+  };
   componentDidMount() {
     const chartOptions = {
       ...{
@@ -81,6 +92,18 @@ class CovidChart extends Component {
           borderWidth: 1.5,
           pointRadius: 0,
           pointHoverRadius: 3
+        },
+        {
+          label: this.formatMode[this.covidMode],
+          fill: "start",
+          data: this.covidData,
+          backgroundColor: "rgba(249, 0, 0, 0.1)",
+          borderColor: "rgba(249, 0, 0, 1)",
+          pointBackgroundColor: "#ffffff",
+          pointHoverBackgroundColor: "rgb(255,0,0)",
+          borderWidth: 1.5,
+          pointRadius: 0,
+          pointHoverRadius: 3
         }
       ]
     };
@@ -101,7 +124,10 @@ class CovidChart extends Component {
   render() {
     return (
       <Card>
-        <CovidChartHeader onCovidUpdate={this.onCovidUpdate} />
+        <CovidChartHeader
+          onCovidUpdate={this.onCovidUpdate}
+          onCovidCompareUpdate={this.onCovidCompareUpdate}
+        />
         <CardBody>
           <canvas
             ref={this.canvasRef}
