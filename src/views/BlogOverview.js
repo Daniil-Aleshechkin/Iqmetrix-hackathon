@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "shards-react";
+import { DateTime } from "luxon";
 
 import Map from "./../components/charts/Map";
 
@@ -13,7 +14,14 @@ class BlogOverview extends Component {
   //Will replace with api calls also upgrade them to get yearly, montly, and daily inputs
   getRetailData = {
     stock: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
+      console.log(responseLabels);
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -27,7 +35,13 @@ class BlogOverview extends Component {
       return { data };
     },
     sales: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -41,7 +55,13 @@ class BlogOverview extends Component {
       return { data };
     },
     revenue: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -55,7 +75,13 @@ class BlogOverview extends Component {
       return { data };
     },
     customer: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -71,7 +97,13 @@ class BlogOverview extends Component {
   };
   getCovidData = {
     cases: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -85,7 +117,13 @@ class BlogOverview extends Component {
       return { data };
     },
     deaths: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -99,7 +137,13 @@ class BlogOverview extends Component {
       return { data };
     },
     vacinations: () => {
-      const responseLabels = Array.from(new Array(30), (_, i) => i + 1);
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
         new Array(30),
         () => Math.random() * 1000
@@ -114,32 +158,19 @@ class BlogOverview extends Component {
     }
   };
   getPredictionData = {
-    sales: () => {
-      const responseLabels = (() => {
-        const months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ];
-        const thisMonth = new Date().getMonth();
-        var nextMonths = [];
-
-        for (var i = 0; i < 5; i++) {
-          nextMonths.push(months[(i + thisMonth) % 12]);
-        }
-        return nextMonths;
-      })();
+    sales: (
+      startDate = this.defaultStartDate,
+      endDate = this.defaultEndDate
+    ) => {
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
-        new Array(5),
+        new Array(30),
         () => Math.random() * 1000
       );
 
@@ -151,31 +182,15 @@ class BlogOverview extends Component {
       return { data };
     },
     revenue: () => {
-      const responseLabels = (() => {
-        const months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ];
-        const thisMonth = new Date().getMonth();
-        var nextMonths = [];
-
-        for (var i = 0; i < 5; i++) {
-          nextMonths.push(months[(i + thisMonth) % 12]);
-        }
-        return nextMonths;
-      })();
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
-        new Array(5),
+        new Array(30),
         () => Math.random() * 1000
       );
 
@@ -187,31 +202,15 @@ class BlogOverview extends Component {
       return { data };
     },
     customer: () => {
-      const responseLabels = (() => {
-        const months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ];
-        const thisMonth = new Date().getMonth();
-        var nextMonths = [];
-
-        for (var i = 0; i < 5; i++) {
-          nextMonths.push(months[(i + thisMonth) % 12]);
-        }
-        return nextMonths;
-      })();
+      const responseLabels = Array.from(new Array(30), (_, i) =>
+        DateTime.fromISO(
+          `2021-03-${
+            i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+          }T01:35:22.327Z`
+        )
+      );
       const responseValues = Array.from(
-        new Array(5),
+        new Array(30),
         () => Math.random() * 1000
       );
 

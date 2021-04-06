@@ -3,6 +3,8 @@ import BarChart from "./BarChart";
 import CovidChart from "./CovidChart";
 import PredictiveChart from "./PredictiveChart";
 
+import { DateTime } from "luxon";
+
 import { Col, Row } from "shards-react";
 
 class MainSubCharts extends Component {
@@ -74,7 +76,11 @@ class MainSubCharts extends Component {
         <Col sm="12" lg="4" className="mb-4">
           <BarChart
             key={`retail ${this.state.modes.bar}`}
-            labels={Object.keys(this.state.chartData.retailData.data)}
+            labels={Object.keys(this.state.chartData.retailData.data).map(
+              date => {
+                return DateTime.fromISO(date).toFormat("d' 'LLL");
+              }
+            )}
             data={Object.values(this.state.chartData.retailData.data)}
             mode={this.state.modes.bar}
             onRetailUpdate={this.onModeUpdate.onRetailUpdate}
@@ -83,7 +89,11 @@ class MainSubCharts extends Component {
         <Col sm="12" lg="4" className="mb-4">
           <CovidChart
             key={`covid ${this.state.modes.covid} ${this.state.modes.covidCompare}`}
-            labels={Object.keys(this.state.chartData.covidData.data)}
+            labels={Object.keys(this.state.chartData.covidData.data).map(
+              date => {
+                return DateTime.fromISO(date).toFormat("d' 'LLL");
+              }
+            )}
             data={Object.values(this.state.chartData.covidCompareData.data)}
             covidData={Object.values(this.state.chartData.covidData.data)}
             mode={this.state.modes.covidCompare}
@@ -95,7 +105,11 @@ class MainSubCharts extends Component {
         <Col sm="12" lg="4" className="mb-4">
           <PredictiveChart
             key={`prediction ${this.state.modes.prediction}`}
-            labels={Object.keys(this.state.chartData.predictionData.data)}
+            labels={Object.keys(this.state.chartData.predictionData.data).map(
+              date => {
+                return DateTime.fromISO(date).toFormat("d' 'LLL");
+              }
+            )}
             data={Object.values(this.state.chartData.predictionData.data)}
             mode={this.state.modes.prediction}
             onPredictionUpdate={this.onModeUpdate.onPredictionUpdate}
