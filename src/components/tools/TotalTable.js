@@ -17,12 +17,6 @@ const TotalTable = ({ sale, ship, revenue, customer }) => {
   return (
     <table className="table table-sm table-hover table-bordered p-1">
       <thead>
-        <tr className="text-center">
-          <th colSpan="2">All Data</th>
-          <th id="detail-tab">
-            <button className="btn btn-dark">Detail</button>
-          </th>
-        </tr>
         <tr>
           <th scope="col">Parameter</th>
           <th scope="col">Count</th>

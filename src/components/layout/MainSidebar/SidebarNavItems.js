@@ -7,6 +7,9 @@ import { Store } from "../../../flux";
 import TotalTable from "./../../../components/tools/TotalTable";
 import ZoomStock from "./../../../components/tools/ZoomStock";
 import MapLayers from "./../../../components/tools/MapLayers";
+
+import ProductList from "./../../../components/tools/ProductList";
+
 class SidebarNavItems extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +46,7 @@ class SidebarNavItems extends React.Component {
           ))}{" "}
           <ZoomStock />
           <MapLayers />
+          <ProductList />
           <TotalTable />
         </Nav>
       </div>
