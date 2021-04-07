@@ -8,12 +8,16 @@ class ProductList extends Component {
       console.log(product);
       return { name: product, selected: false };
     });
-    products.unshift({ name: "Total", selected: true, isTotal: true });
+    products.unshift({ name: "total", selected: true, isTotal: true });
     this.state = {
       products
     };
-    console.log(this.state);
+    console.log(props.onSelectProduct);
+    this.onSelectProduct = props.onSelectProduct;
   }
+  getSelected = () => {
+    return this.state.selected;
+  };
   onSelect = product => {
     let products = [...this.state.products];
 
@@ -23,9 +27,8 @@ class ProductList extends Component {
       ...selectedProduct,
       selected: false
     };
-
+    this.onSelectProduct(product.name);
     products[products.indexOf(product)] = { ...product, selected: true };
-    console.log(products);
     this.setState({ products });
   };
   render() {

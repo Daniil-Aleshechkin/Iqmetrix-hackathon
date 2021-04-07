@@ -4,7 +4,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  CardHeader
+  CardHeader,
+  Row,
+  Col
 } from "shards-react";
 
 class CovidChartHeader extends Component {
@@ -29,73 +31,81 @@ class CovidChartHeader extends Component {
   render() {
     return (
       <CardHeader>
-        <Dropdown
-          className="float-left"
-          open={this.state.openParameter}
-          toggle={this.toggleParameter}
-        >
-          <DropdownToggle theme="dark">Parameter</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidCompareUpdate("stock");
-              }}
+        <Row>
+          <Col sm="12" lg="4">
+            {" "}
+            <Dropdown
+              open={this.state.openParameter}
+              toggle={this.toggleParameter}
             >
-              Stock
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidCompareUpdate("sales");
-              }}
+              <DropdownToggle theme="dark">Parameter</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidCompareUpdate("stock");
+                  }}
+                >
+                  Stock
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidCompareUpdate("sales");
+                  }}
+                >
+                  Sales
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidCompareUpdate("customer");
+                  }}
+                >
+                  Customers
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidCompareUpdate("revenue");
+                  }}
+                >
+                  Revenue
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Col>
+          <Col sm="12" lg="4"></Col>
+          <Col sm="12" lg="4">
+            {" "}
+            <Dropdown
+              className="text-right"
+              open={this.state.openCovidItem}
+              toggle={this.toggleCovid}
             >
-              Sales
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidCompareUpdate("customer");
-              }}
-            >
-              Customers
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidCompareUpdate("revenue");
-              }}
-            >
-              Revenue
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-        <Dropdown
-          className="float-right"
-          open={this.state.openCovidItem}
-          toggle={this.toggleCovid}
-        >
-          <DropdownToggle theme="dark">Covid Item</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidUpdate("cases");
-              }}
-            >
-              Cases
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidUpdate("deaths");
-              }}
-            >
-              Deaths
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onCovidUpdate("vacinations");
-              }}
-            >
-              Vacinations
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+              <DropdownToggle theme="dark">Covid Item</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidUpdate("cases");
+                  }}
+                >
+                  Cases
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidUpdate("deaths");
+                  }}
+                >
+                  Deaths
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onCovidUpdate("vacinations");
+                  }}
+                >
+                  Vacinations
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Col>
+        </Row>
       </CardHeader>
     );
   }

@@ -10,6 +10,11 @@ import PageTitle from "./../components/common/PageTitle";
 import "../assets/map.css";
 
 class BlogOverview extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedProduct: props.selectedProduct };
+    this.selectProct = props.selectProct;
+  }
   //Grabbing data functions
   //Will replace with api calls also upgrade them to get yearly, montly, and daily inputs
   getRetailData = {
@@ -252,9 +257,11 @@ class BlogOverview extends Component {
 
         {/*All charts under the map should be rendered here */}
         <MainSubCharts
+          key={this.state.selectedProduct}
           getCovidData={this.getCovidData}
           getPredictionData={this.getPredictionData}
           getRetailData={this.getRetailData}
+          selectedProduct={this.state.selectedProduct}
         />
       </Container>
     );

@@ -8,7 +8,7 @@ import TotalTable from "./../../../components/tools/TotalTable";
 import ZoomStock from "./../../../components/tools/ZoomStock";
 import MapLayers from "./../../../components/tools/MapLayers";
 
-import ProductList from "./../../../components/tools/ProductList";
+import Product from "./../../../components/tools/Product";
 
 class SidebarNavItems extends React.Component {
   constructor(props) {
@@ -17,6 +17,8 @@ class SidebarNavItems extends React.Component {
     this.state = {
       navItems: Store.getSidebarItems()
     };
+    this.selectProduct = props.selectProduct;
+    console.log(props.selectProduct);
 
     this.onChange = this.onChange.bind(this);
   }
@@ -46,7 +48,7 @@ class SidebarNavItems extends React.Component {
           ))}{" "}
           <ZoomStock />
           <MapLayers />
-          <ProductList />
+          <Product selectProduct={this.selectProduct} />
           <TotalTable />
         </Nav>
       </div>

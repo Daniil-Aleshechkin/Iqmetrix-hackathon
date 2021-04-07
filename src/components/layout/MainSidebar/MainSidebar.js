@@ -19,7 +19,7 @@ class MainSidebar extends React.Component {
       menuVisible: false,
       sidebarNavItems: Store.getSidebarItems()
     };
-
+    this.selectProduct = props.selectProduct;
     this.onChange = this.onChange.bind(this);
   }
 
@@ -51,7 +51,7 @@ class MainSidebar extends React.Component {
       <Col tag="aside" className={classes} lg={{ size: 2 }} md={{ size: 3 }}>
         <SidebarMainNavbar hideLogoText={this.props.hideLogoText} />
         <SidebarSearch />
-        <SidebarNavItems />
+        <SidebarNavItems selectProduct={this.selectProduct} />
       </Col>
     );
   }

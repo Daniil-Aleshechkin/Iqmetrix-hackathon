@@ -3,9 +3,9 @@ import React from "react";
 const ProductItem = ({ product, onSelect }) => {
   function renderColour() {
     if (product.selected) {
-      return "dark text-white";
+      return "dark text-white text-capitalize";
     } else {
-      return "white";
+      return "white text-capitalize";
     }
   }
   return (

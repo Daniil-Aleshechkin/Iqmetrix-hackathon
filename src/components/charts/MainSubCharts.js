@@ -18,7 +18,7 @@ class MainSubCharts extends Component {
         covidCompare: "stock",
         prediction: "sales"
       },
-
+      selectedProduct: props.selectedProduct,
       chartData: {
         retailData: props.getRetailData.stock(),
         covidCompareData: props.getRetailData.stock(),
@@ -88,7 +88,7 @@ class MainSubCharts extends Component {
         </Col>
         <Col sm="12" lg="4" className="mb-4">
           <CovidChart
-            key={`covid ${this.state.modes.covid} ${this.state.modes.covidCompare}`}
+            key={`covid ${this.state.selectedProduct} ${this.state.modes.covid} ${this.state.modes.covidCompare}`}
             labels={Object.keys(this.state.chartData.covidData.data).map(
               date => {
                 return DateTime.fromISO(date).toFormat("d' 'LLL");
@@ -97,6 +97,7 @@ class MainSubCharts extends Component {
             data={Object.values(this.state.chartData.covidCompareData.data)}
             covidData={Object.values(this.state.chartData.covidData.data)}
             mode={this.state.modes.covidCompare}
+            product={this.state.selectedProduct}
             covidMode={this.state.modes.covid}
             onCovidUpdate={this.onModeUpdate.onCovidUpdate}
             onCovidCompareUpdate={this.onModeUpdate.onCovidCompareUpdate}

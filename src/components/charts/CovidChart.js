@@ -12,6 +12,7 @@ class CovidChart extends Component {
     this.covidData = props.covidData;
     this.mode = props.mode;
     this.covidMode = props.covidMode;
+    this.product = props.product;
     this.onCovidUpdate = props.onCovidUpdate;
     this.onCovidCompareUpdate = props.onCovidCompareUpdate;
     this.canvasRef = React.createRef();
@@ -125,8 +126,11 @@ class CovidChart extends Component {
     return (
       <Card>
         <CovidChartHeader
+          key={this.product}
           onCovidUpdate={this.onCovidUpdate}
           onCovidCompareUpdate={this.onCovidCompareUpdate}
+          product={this.product}
+          mode={this.mode}
         />
         <CardBody>
           <canvas
