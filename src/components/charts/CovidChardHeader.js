@@ -31,8 +31,8 @@ class CovidChartHeader extends Component {
   render() {
     return (
       <CardHeader>
-        <Row>
-          <Col sm="12" lg="4">
+        <Row className="flex-row">
+          <Col sm="12" lg="4" className="w-auto flex-fill">
             {" "}
             <Dropdown
               open={this.state.openParameter}
@@ -71,8 +71,10 @@ class CovidChartHeader extends Component {
               </DropdownMenu>
             </Dropdown>
           </Col>
-          <Col sm="12" lg="4"></Col>
-          <Col sm="12" lg="4">
+          <Col sm="12" lg="4" className="w-auto flex-fill">
+            <p className="text-center">VS Covid</p>
+          </Col>
+          <Col sm="12" lg="4" className="w-auto flex-fill">
             {" "}
             <Dropdown
               className="text-right"

@@ -4,7 +4,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  CardHeader
+  CardHeader,
+  Col,
+  Row
 } from "shards-react";
 
 class BarChartHeader extends Component {
@@ -22,39 +24,47 @@ class BarChartHeader extends Component {
   render() {
     return (
       <CardHeader>
-        <Dropdown open={this.state.open} toggle={this.toggle}>
-          <DropdownToggle theme="dark">Parameter</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem
-              onClick={() => {
-                this.onRetailUpdate("stock");
-              }}
-            >
-              Stock
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onRetailUpdate("sales");
-              }}
-            >
-              Sales
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onRetailUpdate("customer");
-              }}
-            >
-              Customers
-            </DropdownItem>
-            <DropdownItem
-              onClick={() => {
-                this.onRetailUpdate("revenue");
-              }}
-            >
-              Revenue
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        <Row>
+          <Col sm="12" lg="4">
+            <Dropdown open={this.state.open} toggle={this.toggle}>
+              <DropdownToggle theme="dark">Parameter</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem
+                  onClick={() => {
+                    this.onRetailUpdate("stock");
+                  }}
+                >
+                  Stock
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onRetailUpdate("sales");
+                  }}
+                >
+                  Sales
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onRetailUpdate("customer");
+                  }}
+                >
+                  Customers
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => {
+                    this.onRetailUpdate("revenue");
+                  }}
+                >
+                  Revenue
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Col>
+          <Col sm="12" lg="4">
+            <p className="text-center">Totals</p>
+          </Col>
+          <Col sm="12" lg="4"></Col>
+        </Row>
       </CardHeader>
     );
   }
