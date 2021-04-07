@@ -21,6 +21,7 @@ class MainSidebar extends React.Component {
     };
     this.selectProduct = props.selectProduct;
     this.selectedProduct = props.selectedProduct;
+    this.selectStock = props.selectStock;
     this.getData = props.getData;
     this.onChange = this.onChange.bind(this);
   }
@@ -57,6 +58,7 @@ class MainSidebar extends React.Component {
           getData={this.getData}
           selectProduct={this.selectProduct}
           selectedProduct={this.selectedProduct}
+          selectStock={this.selectStock}
         />
       </Col>
     );

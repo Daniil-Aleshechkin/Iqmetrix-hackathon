@@ -7,7 +7,7 @@ import NavbarSearch from "./NavbarSearch";
 import NavbarNav from "./NavbarNav/NavbarNav";
 import NavbarToggle from "./NavbarToggle";
 
-const MainNavbar = ({ layout, stickyTop, product }) => {
+const MainNavbar = ({ layout, stickyTop, product, stock }) => {
   const classes = classNames(
     "main-navbar",
     "bg-white",
@@ -20,6 +20,8 @@ const MainNavbar = ({ layout, stickyTop, product }) => {
         <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">
           <NavbarSearch />
           <h3 className="mt-auto mb-auto mr-4 text-capitalize">{product}</h3>
+
+          <h3 className="mt-auto mb-auto mr-4 text-capitalize">{stock.name}</h3>
           <NavbarNav />
           <NavbarToggle />
         </Navbar>

@@ -11,8 +11,12 @@ import BlogOverview from "../views/BlogOverview";
 import { DateTime } from "luxon";
 
 class DefaultLayout extends Component {
-  state = { selectedProduct: "total" };
+  state = {
+    selectedProduct: "total",
+    selectedStock: { name: "all", region: "all" }
+  };
   setProduct = selectedProduct => this.setState({ selectedProduct });
+  setStock = selectedStock => this.setState({ selectedStock });
   getData = mode => {
     const responseLabels = Array.from(new Array(30), (_, i) =>
       DateTime.fromISO(
@@ -40,6 +44,7 @@ class DefaultLayout extends Component {
           <MainSidebar
             selectedProduct={this.state.selectedProduct}
             selectProduct={this.setProduct}
+            selectStock={this.setStock}
             getData={this.getData}
           />
           <Col
@@ -49,11 +54,17 @@ class DefaultLayout extends Component {
             sm="12"
             tag="main"
           >
-            {<MainNavbar product={this.state.selectedProduct} />}
+            {
+              <MainNavbar
+                product={this.state.selectedProduct}
+                stock={this.state.selectedStock}
+              />
+            }
             <BlogOverview
               getData={this.getData}
               key={this.state.selectedProduct}
               selectedProduct={this.state.selectedProduct}
+              selectedStock={this.state.selectedStock}
             />
             {<MainFooter />}
           </Col>

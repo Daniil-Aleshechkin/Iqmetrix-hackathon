@@ -1,38 +1,43 @@
 import React, { Component } from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle
-} from "shards-react";
+import ZoomStockList from "./ZoomStockList";
+import stockNames from "./../../data/Stocks";
+
 class ZoomStock extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { open: false };
+    this.state = { stocks: [] };
+    this.selectStock = props.selectStock;
   }
-  toggle() {
-    this.setState(prevState => {
-      return { open: !prevState.open };
-    });
-  }
+  handleSearch = e => {
+    let stockOptions = stockNames.filter(stock =>
+      stock.name.match(new RegExp(e.target.value, "i"))
+    );
+    const stocks = this.sampleSize(stockOptions, 10);
+    console.log(stocks);
+    this.setState({ stocks });
+  };
+  sampleSize = ([...arr], n = 1) => {
+    let m = arr.length;
+    while (m) {
+      const i = Math.floor(Math.random() * m--);
+      [arr[m], arr[i]] = [arr[i], arr[m]];
+    }
+    return arr.slice(0, n);
+  };
   render() {
     return (
-      <div className="p-1 table-bordered text-center">
-        <h4>Zoom to Stock</h4>
-        <Dropdown open={this.state.open} toggle={this.toggle}>
-          <DropdownToggle theme="dark">All Regions</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem>Stock</DropdownItem>
-            <DropdownItem>Sales</DropdownItem>
-            <DropdownItem>Customers</DropdownItem>
-            <DropdownItem>Revenue</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </div>
+      <React.Fragment>
+        <input
+          placeholder="Search for a stock"
+          onChange={this.handleSearch}
+          type="text"
+        />
+        <ZoomStockList
+          onSelectStock={this.selectStock}
+          key={this.state.stocks}
+          stocks={this.state.stocks}
+        />
+      </React.Fragment>
     );
   }
 }

@@ -12,7 +12,10 @@ import "../assets/map.css";
 class BlogOverview extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedProduct: props.selectedProduct };
+    this.state = {
+      selectedProduct: props.selectedProduct,
+      selectedStock: props.selectedStock
+    };
     this.selectProct = props.selectProct;
     this.getData = props.getData;
   }
