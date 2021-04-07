@@ -8,14 +8,40 @@ import MainFooter from "../components/layout/MainFooter";
 
 import BlogOverview from "../views/BlogOverview";
 
+import { DateTime } from "luxon";
+
 class DefaultLayout extends Component {
   state = { selectedProduct: "total" };
   setProduct = selectedProduct => this.setState({ selectedProduct });
+  getData = mode => {
+    const responseLabels = Array.from(new Array(30), (_, i) =>
+      DateTime.fromISO(
+        `2021-03-${
+          i + 1 < 10 ? "0" + (i + 1).toString() : (i + 1).toString()
+        }T01:35:22.327Z`
+      )
+    );
+    const responseValues = Array.from(
+      new Array(30),
+      () => Math.random() * 1000
+    );
+
+    var data = {};
+    responseLabels.forEach((label, i) => {
+      data[label] = responseValues[i];
+    });
+
+    return { data };
+  };
   render() {
     return (
       <Container fluid>
         <Row>
-          <MainSidebar selectProduct={this.setProduct} />
+          <MainSidebar
+            selectedProduct={this.state.selectedProduct}
+            selectProduct={this.setProduct}
+            getData={this.getData}
+          />
           <Col
             className="main-content p-0"
             lg={{ size: 10, offset: 2 }}
@@ -25,6 +51,7 @@ class DefaultLayout extends Component {
           >
             {<MainNavbar product={this.state.selectedProduct} />}
             <BlogOverview
+              getData={this.getData}
               key={this.state.selectedProduct}
               selectedProduct={this.state.selectedProduct}
             />

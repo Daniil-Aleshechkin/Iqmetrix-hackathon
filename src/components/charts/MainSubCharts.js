@@ -20,15 +20,14 @@ class MainSubCharts extends Component {
       },
       selectedProduct: props.selectedProduct,
       chartData: {
-        retailData: props.getRetailData.stock(),
-        covidCompareData: props.getRetailData.stock(),
-        covidData: props.getCovidData.cases(),
-        predictionData: props.getPredictionData.sales()
+        retailData: props.getData(),
+        covidCompareData: props.getData(),
+        covidData: props.getData(),
+        predictionData: props.getData()
       }
     };
-    this.getCovidData = props.getCovidData;
-    this.getPredictionData = props.getPredictionData;
-    this.getRetailData = props.getRetailData;
+
+    this.getData = props.getData;
   }
   onModeUpdate = {
     onRetailUpdate: mode => {
@@ -46,7 +45,7 @@ class MainSubCharts extends Component {
         modes: { ...this.state.modes, covid: mode },
         chartData: {
           ...this.state.chartData,
-          covidData: this.getCovidData[mode]()
+          covidData: this.getData()
         }
       });
     },
@@ -56,7 +55,7 @@ class MainSubCharts extends Component {
         modes: { ...this.state.modes, covidCompare: mode },
         chartData: {
           ...this.state.chartData,
-          covidCompareData: this.getRetailData[mode]()
+          covidCompareData: this.getData()
         }
       });
     },
@@ -65,7 +64,7 @@ class MainSubCharts extends Component {
         modes: { ...this.state.modes, prediction: mode },
         chartData: {
           ...this.state.chartData,
-          predictionData: this.getPredictionData[mode]()
+          predictionData: this.getData()
         }
       });
     }

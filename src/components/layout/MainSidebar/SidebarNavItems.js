@@ -18,8 +18,8 @@ class SidebarNavItems extends React.Component {
       navItems: Store.getSidebarItems()
     };
     this.selectProduct = props.selectProduct;
-    console.log(props.selectProduct);
-
+    this.selectedProduct = props.selectedProduct;
+    this.getData = props.getData;
     this.onChange = this.onChange.bind(this);
   }
 
@@ -49,7 +49,7 @@ class SidebarNavItems extends React.Component {
           <ZoomStock />
           <MapLayers />
           <Product selectProduct={this.selectProduct} />
-          <TotalTable />
+          <TotalTable key={this.state.selectedProduct} getData={this.getData} />
         </Nav>
       </div>
     );
