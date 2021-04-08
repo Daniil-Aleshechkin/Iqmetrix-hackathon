@@ -28,12 +28,14 @@ class Map extends Component {
 
   render() {
     return (
-      <MapsComponent id="maps" zoomSettings={{
-        enable: true,
-        //  zoomOnClick: true,
+      <MapsComponent   id="maps"
+                       zoomSettings={{
+                         shouldZoomInitially:true,
+                         enable: true,
+                         pinchZooming: true,
         mouseWheelZoom: true
-      }} legendSettings={{ visible: true }}>
-        <Inject services={[Zoom, Selection, Highlight, MapsTooltip, DataLabel, Legend ]}/>
+      }}  legendSettings={{ visible: true }} width='100%' height='100%'>
+        <Inject services={[Zoom, Selection, Highlight, MapsTooltip, DataLabel, Legend ]} />
         <LayersDirective >
           <LayerDirective shapeData={world_map} shapeSettings={{
             fill: '#ffffff',

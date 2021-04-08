@@ -8,6 +8,7 @@ import MainSubCharts from "./../components/charts/MainSubCharts";
 import PageTitle from "./../components/common/PageTitle";
 
 import "../assets/map.css";
+import DateSlider from "../components/charts/DateSlider";
 
 class BlogOverview extends Component {
   constructor(props) {
@@ -17,8 +18,9 @@ class BlogOverview extends Component {
       selectedStock: props.selectedStock
     };
     this.selectProct = props.selectProct;
-    this.getData = props.getData;
+    this.getData= props.getData;
   }
+
   //Grabbing data functions
   //Will replace with api calls also upgrade them to get yearly, montly, and daily inputs
   getRetailData = {
@@ -243,6 +245,7 @@ class BlogOverview extends Component {
           <div className="col">
             <div className="card card-small mb-4">
               <div className="card-body p-10 pb-3">
+                <DateSlider/>
                 <div
                   id={"maps_MapAreaBorder0"}
                   className="ag-theme-alpine"
