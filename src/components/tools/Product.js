@@ -1,13 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ProductList from "./ProductList";
 import ProductSearch from "./ProductSearch";
 import names from "./../../data/ProductNames";
-import {Card, CardHeader, Col, Row} from "shards-react";
+import { Card, CardBody, Col, Row, Form } from "shards-react";
 
 class Products extends Component {
   constructor(props) {
     super(props);
-    this.state = {products: []};
+    this.state = { products: [] };
     this.selectProduct = props.selectProduct;
     console.log(props.selectProduct);
   }
@@ -17,7 +17,7 @@ class Products extends Component {
       name.match(new RegExp(e.target.value, "i"))
     );
     const products = this.sampleSize(productOptions, 10);
-    this.setState({products});
+    this.setState({ products });
   };
   sampleSize = ([...arr], n = 1) => {
     let m = arr.length;
@@ -30,18 +30,20 @@ class Products extends Component {
 
   render() {
     return (
-      <Col lg="4" className="mb-4">
-        <CardHeader className="border-bottom">
-          <React.Fragment>
-            <ProductSearch onSearch={this.handleSearch}/>
-            <ProductList
-              onSelectProduct={this.selectProduct}
-              key={this.state.products}
-              products={this.state.products}
-            />
-          </React.Fragment>
-        </CardHeader>
-      </Col>
+      <Card small className="mb-3">
+        <CardBody className="border-bottom">
+          <Form className="add-new-post">
+            <React.Fragment>
+              <ProductSearch onSearch={this.handleSearch} />
+              <ProductList
+                onSelectProduct={this.selectProduct}
+                key={this.state.products}
+                products={this.state.products}
+              />
+            </React.Fragment>
+          </Form>
+        </CardBody>
+      </Card>
     );
   }
 }

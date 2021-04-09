@@ -19,7 +19,7 @@ class BlogOverview extends Component {
       selectedlayer: props.selectedlayer
     };
     this.selectProct = props.selectProct;
-    this.getData= props.getData;
+    this.getData = props.getData;
   }
 
   //Grabbing data functions
@@ -246,7 +246,7 @@ class BlogOverview extends Component {
           <div className="col">
             <div className="card card-small mb-4">
               <div className="card-body p-10 pb-3">
-                <DateSlider/>
+                <DateSlider />
                 <div
                   id={"maps_MapAreaBorder0"}
                   className="ag-theme-alpine"
@@ -256,7 +256,7 @@ class BlogOverview extends Component {
                     alignItems: "center"
                   }}
                 >
-                  <Map getMapData={this.getMapData} />
+                  {/*<Map getMapData={this.getMapData} />*/}
                 </div>
               </div>
             </div>
