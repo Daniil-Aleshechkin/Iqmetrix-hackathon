@@ -43,7 +43,7 @@ class BlogOverview extends Component {
                     alignItems: "center"
                   }}
                 >
-                  {/*<Map getMapData={this.getMapData} />*/}
+                  <Map getMapData={this.getMapData} />
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@ class BlogOverview extends Component {
 
         {/*All charts under the map should be rendered here */}
         <MainSubCharts
-          key={`${this.state.selectedProduct} ${this.state.selectedStock.region}`}
+          key={`${this.state.selectedProduct} ${this.state.selectedProduct}`}
           getData={this.getData}
         />
       </Container>
