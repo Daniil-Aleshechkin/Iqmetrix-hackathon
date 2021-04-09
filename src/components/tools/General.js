@@ -20,12 +20,16 @@ class General extends Component {
       pdf.save("download.pdf");
     });
   }
+
+   refreshPage() {
+    window.location.reload(false);
+  }
   render() {
     return (
       <Card small className="mb-3">
         <CardBody className="p-1 table-bordered text-center">
           <Form className="add-new-post">
-            <button theme="dark"  type="button" class="btn btn-dark"  style={{"width":"80%", "marginTop": "20px"}}>Reset All</button>
+            <button theme="dark"  onClick={this.refreshPage} type="button" class="btn btn-dark"  style={{"width":"80%", "marginTop": "20px"}}>Reset All</button>
             <button type="button" onClick={this.printDocument} class="btn btn-dark"  style={{"width":"80%", "marginTop": "20px"}}>Download All</button>
             <MaterialDatePicker  style={{"width":"80%", "marginTop": "20px"}}/>
           </Form>
