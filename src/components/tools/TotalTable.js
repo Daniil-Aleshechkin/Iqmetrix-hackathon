@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
-import { Card, CardBody } from "shards-react";
+import {Card, CardBody} from "shards-react";
 
 class TotalTable extends Component {
   constructor(props) {
@@ -31,6 +31,7 @@ class TotalTable extends Component {
       )
     };
   }
+
   formatPercentage = percentage => {
     if (percentage > 0) {
       return `${percentage}% ▲`;
@@ -43,51 +44,59 @@ class TotalTable extends Component {
     }
     return "danger";
   };
+
   render() {
     return (
-      <table className="table table-sm table-hover table-bordered p-1">
-        <thead>
-          <tr>
-            <th scope="col">Parameter</th>
-            <th scope="col">Count</th>
-            <th scope="col" className="text-right">
-              %
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className={`table-${this.formatColour(this.sale.percentage)}`}>
-            <th scope="row">Sale</th>
-            <td>{this.sale.count}</td>
-            <td className="text-right">
-              {this.formatPercentage(this.sale.percentage)}
-            </td>
-          </tr>
-          <tr className={`table-${this.formatColour(this.ship.percentage)}`}>
-            <th scope="row">Shipments</th>
-            <td>{this.ship.count}</td>
-            <td className="text-right">
-              {this.formatPercentage(this.ship.percentage)}
-            </td>
-          </tr>
-          <tr className={`table-${this.formatColour(this.revenue.percentage)}`}>
-            <th scope="row">Revenue</th>
-            <td>{this.revenue.count}</td>
-            <td className="text-right">
-              {this.formatPercentage(this.revenue.percentage)}
-            </td>
-          </tr>
-          <tr
-            className={`table-${this.formatColour(this.customer.percentage)}`}
-          >
-            <th scope="row">Customers</th>
-            <td>{this.customer.count}</td>
-            <td className="text-right">
-              {this.formatPercentage(this.customer.percentage)}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <Card small className="mb-3">
+        <CardBody>
+            <table className="table table-sm table-hover table-bordered p-1">
+              <thead>
+              <tr>
+                <th scope="col">Parameter</th>
+                <th scope="col">Count</th>
+                <th scope="col" className="text-right">
+                  %
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr
+                className={`table-${this.formatColour(this.sale.percentage)}`}>
+                <th scope="row">Sale</th>
+                <td>{this.sale.count}</td>
+                <td className="text-right">
+                  {this.formatPercentage(this.sale.percentage)}
+                </td>
+              </tr>
+              <tr
+                className={`table-${this.formatColour(this.ship.percentage)}`}>
+                <th scope="row">Shipments</th>
+                <td>{this.ship.count}</td>
+                <td className="text-right">
+                  {this.formatPercentage(this.ship.percentage)}
+                </td>
+              </tr>
+              <tr
+                className={`table-${this.formatColour(this.revenue.percentage)}`}>
+                <th scope="row">Revenue</th>
+                <td>{this.revenue.count}</td>
+                <td className="text-right">
+                  {this.formatPercentage(this.revenue.percentage)}
+                </td>
+              </tr>
+              <tr
+                className={`table-${this.formatColour(this.customer.percentage)}`}
+              >
+                <th scope="row">Customers</th>
+                <td>{this.customer.count}</td>
+                <td className="text-right">
+                  {this.formatPercentage(this.customer.percentage)}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+        </CardBody>
+      </Card>
     );
   }
 }

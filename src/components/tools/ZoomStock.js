@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ZoomStockList from "./ZoomStockList";
 import stockNames from "./../../data/Stocks";
+import {Card, CardBody, Form} from "shards-react";
 
 class ZoomStock extends Component {
   constructor(props) {
@@ -26,6 +27,9 @@ class ZoomStock extends Component {
   };
   render() {
     return (
+      <Card small className="mb-3">
+        <CardBody>
+          <Form className="add-new-post">
       <React.Fragment>
         <input
           placeholder="Search for a stock"
@@ -38,6 +42,9 @@ class ZoomStock extends Component {
           stocks={this.state.stocks}
         />
       </React.Fragment>
+          </Form>
+        </CardBody>
+      </Card>
     );
   }
 }
