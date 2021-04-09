@@ -35,12 +35,11 @@ class MainSubCharts extends Component {
         modes: { ...this.state.modes, bar: mode },
         chartData: {
           ...this.state.chartData,
-          retailData: this.getRetailData[mode]()
+          retailData: this.getData()
         }
       });
     },
     onCovidUpdate: mode => {
-      console.log(mode, this.getCovidData[mode]());
       this.setState({
         modes: { ...this.state.modes, covid: mode },
         chartData: {
