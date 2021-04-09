@@ -9,6 +9,7 @@ import ZoomStock from "./../../../components/tools/ZoomStock";
 import MapLayers from "./../../../components/tools/MapLayers";
 
 import Product from "./../../../components/tools/Product";
+import General from "../../tools/General";
 
 class SidebarNavItems extends React.Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class SidebarNavItems extends React.Component {
           {items.map((item, idx) => (
             <SidebarNavItem key={idx} item={item} />
           ))}{" "}
+          <General/>
           <MapLayers />
           <ZoomStock selectStock={this.selectStock} />
           <Product selectProduct={this.selectProduct} />
