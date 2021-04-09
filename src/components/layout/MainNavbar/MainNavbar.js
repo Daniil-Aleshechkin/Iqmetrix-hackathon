@@ -16,7 +16,7 @@ const MainNavbar = ({ layout, stickyTop, product, stock }) => {
 
   return (
     <div className={classes}>
-      <Container className="p-0">
+      <Container className="p-0 ml-0">
         <Navbar type="light" className="align-items-stretch flex-md-nowrap p-0">
           <h3 className="mt-auto mb-auto ml-4 text-capitalize">{product}</h3>
 

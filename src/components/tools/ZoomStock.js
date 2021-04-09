@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ZoomStockList from "./ZoomStockList";
 import stockNames from "./../../data/Stocks";
-import {Card, CardBody, Form} from "shards-react";
+import { Card, CardBody, Form } from "shards-react";
 
 class ZoomStock extends Component {
   constructor(props) {
@@ -30,18 +30,19 @@ class ZoomStock extends Component {
       <Card small className="mb-3">
         <CardBody>
           <Form className="add-new-post">
-      <React.Fragment>
-        <input
-          placeholder="Search for a stock"
-          onChange={this.handleSearch}
-          type="text"
-        />
-        <ZoomStockList
-          onSelectStock={this.selectStock}
-          key={this.state.stocks}
-          stocks={this.state.stocks}
-        />
-      </React.Fragment>
+            <React.Fragment>
+              <input
+                placeholder="Search for a stock"
+                className="w-100"
+                onChange={this.handleSearch}
+                type="text"
+              />
+              <ZoomStockList
+                onSelectStock={this.selectStock}
+                key={this.state.stocks}
+                stocks={this.state.stocks}
+              />
+            </React.Fragment>
           </Form>
         </CardBody>
       </Card>
