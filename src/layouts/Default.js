@@ -13,10 +13,12 @@ import { DateTime } from "luxon";
 class DefaultLayout extends Component {
   state = {
     selectedProduct: "total",
-    selectedStock: { name: "all", region: "all" }
+    selectedStock: { name: "all", region: "all" },
+    selectedlayer: "all"
   };
   setProduct = selectedProduct => this.setState({ selectedProduct });
   setStock = selectedStock => this.setState({ selectedStock });
+  setLayer = selectedlayer => this.setState({ selectedlayer });
   getData = mode => {
     const responseLabels = Array.from(new Array(30), (_, i) =>
       DateTime.fromISO(
@@ -58,6 +60,7 @@ class DefaultLayout extends Component {
               <MainNavbar
                 product={this.state.selectedProduct}
                 stock={this.state.selectedStock}
+                layer={this.state.selectedStock}
               />
             }
             <BlogOverview
@@ -65,6 +68,7 @@ class DefaultLayout extends Component {
               key={this.state.selectedProduct}
               selectedProduct={this.state.selectedProduct}
               selectedStock={this.state.selectedStock}
+              selectedlayer={this.state.selectedlayer}
             />
             {<MainFooter />}
           </Col>

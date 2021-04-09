@@ -13,11 +13,11 @@ class General extends Component {
   render() {
     return (
       <Card small className="mb-3">
-        <CardBody>
+        <CardBody className="p-1 table-bordered text-center">
           <Form className="add-new-post">
-            <Button theme="dark"  style={{"width":"100%"}}>Reset All</Button>
-            <Button theme="dark"  style={{"width":"100%", "marginTop": "20px"}}>Download All</Button>
-            <MaterialDatePicker/>
+            <Button theme="dark"  style={{"width":"80%", "marginTop": "20px"}}>Reset All</Button>
+            <Button theme="dark"  style={{"width":"80%", "marginTop": "20px"}}>Download All</Button>
+            <MaterialDatePicker  style={{"width":"80%", "marginTop": "20px"}}/>
           </Form>
         </CardBody>
       </Card>

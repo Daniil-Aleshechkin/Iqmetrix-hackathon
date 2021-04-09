@@ -27,10 +27,10 @@ class ZoomStock extends Component {
       <Card small className="mb-3">
         <CardBody>
             <div className="p-1 table-bordered text-center">
-              <Dropdown open={this.state.open} toggle={this.toggle}>
+              <Dropdown open={this.state.open} toggle={this.toggle} >
                 <h4>Map Layers</h4>
                 <DropdownToggle theme="dark"> </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu style={{"width":"80%", "marginTop": "20px"}}>
                   <DropdownItem>Stock</DropdownItem>
                   <DropdownItem>Sales</DropdownItem>
                   <DropdownItem>Customers</DropdownItem>

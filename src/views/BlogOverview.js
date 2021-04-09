@@ -15,7 +15,8 @@ class BlogOverview extends Component {
     super(props);
     this.state = {
       selectedProduct: props.selectedProduct,
-      selectedStock: props.selectedStock
+      selectedStock: props.selectedStock,
+      selectedlayer: props.selectedlayer
     };
     this.selectProct = props.selectProct;
     this.getData= props.getData;
@@ -255,7 +256,7 @@ class BlogOverview extends Component {
                     alignItems: "center"
                   }}
                 >
-                  <Map />
+                  <Map getMapData={this.getMapData} />
                 </div>
               </div>
             </div>
