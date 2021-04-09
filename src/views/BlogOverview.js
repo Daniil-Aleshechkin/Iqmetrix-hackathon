@@ -237,7 +237,7 @@ class BlogOverview extends Component {
 
   render() {
     return (
-      <Container fluid className="main-content-container px-4">
+      <Container fluid id={"allDatas"} className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-2">
           <PageTitle subtitle="" className="text-sm-left mb-1" />
