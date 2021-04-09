@@ -14,7 +14,8 @@ class DefaultLayout extends Component {
   state = {
     selectedProduct: "total",
     selectedStock: { name: "all", region: "all" },
-    selectedlayer: "all"
+    selectedlayer: "all",
+    startDate: "2021-03-05T06:00:00.000Z"
   };
   setProduct = selectedProduct => this.setState({ selectedProduct });
   setStock = selectedStock => this.setState({ selectedStock });
@@ -65,8 +66,9 @@ class DefaultLayout extends Component {
             }
             <BlogOverview
               getData={this.getData}
-              key={this.state.selectedProduct}
+              key={`${this.state.selectedProduct} ${this.state.selectedStock.region}`}
               selectedProduct={this.state.selectedProduct}
+              selectStock={this.state.selectedStock}
               selectedStock={this.state.selectedStock}
               selectedlayer={this.state.selectedlayer}
             />
