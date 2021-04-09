@@ -20,6 +20,17 @@ class Map extends Component {
 
   constructor() {
     super();
+    this.state= {
+      plat:
+        ['#f1eef6',
+          '#d0d1e6',
+          '#a6bddb',
+          '#74a9cf',
+          '#3690c0',
+          '#0570b0',
+          '#034e7b']
+
+    }
   }
 
   componentDidMount() {
@@ -28,7 +39,7 @@ class Map extends Component {
 
   render() {
     return (
-      <MapsComponent   id="maps"
+      <MapsComponent baseLayerIndex={1}  id="maps"
                        zoomSettings={{
                          shouldZoomInitially:true,
                          enable: true,
@@ -40,19 +51,21 @@ class Map extends Component {
           <LayerDirective shapeData={world_map} shapeSettings={{
             fill: '#ffffff',
             border: {width: 0.5, color: 'White'},
-          }}  />
-          <LayerDirective shapeData={canada_map} shapeDataPath='Country' baseLayerIndex={1}
+          }}
+                          selectionSettings={{
+                            enable: true,
+                            fill: 'red',
+                            border: {color: 'white', width: 2}
+                          }}
+
+
+          />
+          <LayerDirective shapeData={canada_map}
                           animationDuration={500}
-                          shapePropertyPath='name' type="SubLayer"
+                          shapePropertyPath='CDNAME'
                           shapeSettings={{
                             autofill: true,
-                            palette: ['#f1eef6',
-                             '#d0d1e6',
-                             '#a6bddb',
-                             '#74a9cf',
-                             '#3690c0',
-                             '#0570b0',
-                             '#034e7b'],
+                            palette: this.state.plat,
                             border: {width: 1, color: 'white'},
                             colorValuePath: 'Membership',
                             colorMapping: [
@@ -79,11 +92,6 @@ class Map extends Component {
                               }
                             ]
                           }}
-                          selectionSettings={{
-                            enable: true,
-                            fill: 'red',
-                            border: {color: 'white', width: 2}
-                          }}
                           highlightSettings={{
                             enable: true,
                             fill: 'green',
@@ -97,6 +105,7 @@ class Map extends Component {
                             visible: true,
                             labelPath: 'name',
                           }}
+
           />
         </LayersDirective>
       </MapsComponent>

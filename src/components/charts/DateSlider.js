@@ -21,8 +21,8 @@ class DateSlider extends Component {
     super();
 
     const today = startOfToday();
-    const fourDaysAgo = subDays(today, 4);
-    const oneWeekAgo = subDays(today, 7);
+    const fourDaysAgo = subDays(today, 400);
+    const oneWeekAgo = subDays(today, 450);
 
     this.state = {
       selected: fourDaysAgo,
@@ -55,7 +55,7 @@ class DateSlider extends Component {
         }}
       >
         <b>{header}</b>
-        <div style={{ fontSize: 12 }}>{format(date, "MMM dd h:mm a")}</div>
+        <div style={{ fontSize: 12 }}>{format(date, "MMM dd, yyyy")}</div>
       </div>
     );
   }
@@ -65,13 +65,13 @@ class DateSlider extends Component {
 
     const dateTicks = scaleTime()
       .domain([min, max])
-      .ticks(8)
+      .ticks(30)
       .map(d => +d);
 
     return (
       <div>
         {this.renderDateTime(selected, "")}
-        <div style={{ margin: "0%", height: 10, width: "90%" }}>
+        <div style={{ margin: "0%", height: 10, width: "100%" }}>
           <Slider
             mode={1}
             step={halfHour}
